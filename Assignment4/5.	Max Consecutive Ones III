@@ -1,0 +1,36 @@
+class Solution {
+    public int longestOnes(int[] arr, int k) 
+    {
+        int l=0,r=0;
+        int sum=0;
+        int ans=0;
+        while(r<arr.length)
+        { 
+            while(arr[r]==0 && k==0)
+            {
+                if(arr[l]==0)
+                {
+                    sum-=1;
+                    k++;
+                }
+                else
+                {
+                    sum-=arr[l];
+                }
+                l++;
+            }
+            if(arr[r]==0 && k!=0)
+            {
+                sum+=1;
+                k--;
+            }
+            else if(arr[r]==1)
+            {
+                sum+=arr[r];
+            }
+            ans=Math.max(sum,ans);
+            r++;
+        }   
+        return ans; 
+    }
+}
